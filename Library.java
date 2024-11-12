@@ -2,6 +2,7 @@
 import java.util.*;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.time.temporal.ChronoUnit;
 
 
 /**
@@ -11,7 +12,7 @@ import java.text.SimpleDateFormat;
 public class Library implements LibraryInfo {
 
 	String libraryName;
-	static Calendar calendar = new GregorianCalendar();
+	public static Calendar calendar = new GregorianCalendar();
 	
 	
 	/**
@@ -58,7 +59,7 @@ public class Library implements LibraryInfo {
          * NOTE: Whenever a new user is initiallized, its pointer is added to the <b>user</b> array of the Library class to keep track of it
          * your methods should add the users to this array whenever a new user is initiallized
          */
-        Admin admin = new Admin("munshi:p", "lums123", Constants.ADMIN,true);
+        Admin admin = new Admin("admin", "admin123", Constants.ADMIN,true);
         users.add(admin); //add the new admin user to the list of the users
 
 		// Default student
@@ -179,6 +180,12 @@ public class Library implements LibraryInfo {
 		// It removes all the resources from the library under the assumption that
 		// the user had taken all the resources with him.
 		LibraryUser user = findUser(userID);
+
+		// Check user null
+		if (user == null) {
+			return false;
+		}
+
 		if(user.type != Constants.ADMIN){
 			Borrower borrower = (Borrower)user;
 			for(int i=0;i<borrower.issuedResources.size();i++){
@@ -202,7 +209,7 @@ public class Library implements LibraryInfo {
 	/*******Resource Search Functions***********/
 	/*******************************************/
 	
-	LibraryResource findResource(int resID){
+	public LibraryResource findResource(int resID){
 		//find resource by resourceID
 		for(int i=0;i<resources.size();i++){
 			if(resources.get(i).resourceID == resID){
@@ -260,7 +267,7 @@ public class Library implements LibraryInfo {
 	/************ To Update Fines ************/
 	/*****************************************/
 
-	void updateFines(){
+	public void updateFines(){
 	
 		//Updates Fines by checking the list kept by Library (Set<Fine> toBeFined).
 		//This collection contains the fines of the resources which are issued to some users.
@@ -285,7 +292,7 @@ public class Library implements LibraryInfo {
 			
 			if(today.compareTo(borrowable.getReturnDate1()) > 0){
 				borrower = (Borrower)findUser(fine.userID);
-				days = today.getDate()- borrowable.getReturnDate1().getDate();
+				days = today.getDate() - borrowable.getReturnDate1().getDate();
 				if(borrowable.type == Constants.BOOK){
 					amount = days*100;
 					fine.updateFine(amount);

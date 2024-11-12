@@ -1,8 +1,11 @@
 import java.util.*;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
 
-import javax.annotation.Resource;
+// import javax.annotation.Resource;
 
 public class Driver{
 
@@ -460,7 +463,31 @@ public class Driver{
 	
 	/*****************************************/
 
-	
+		// Method to write library data to a text file
+    public void writeLibraryDataToFile() {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter("LibraryData.txt"))) {
+            // Write library's general information
+            writer.write("Library Name: " + myLibrary.getLibraryName() + "\n\n");
+
+            // Write user information
+            writer.write("Users:\n");
+            for (LibraryUser user : myLibrary.users) {
+                writer.write("ID: " + user.getUserID() + ", Name: " + user.userName + ", Type: " + user.type + "\n");
+            }
+
+            // Write resource information
+            writer.write("\nResources:\n");
+            for (LibraryResource resource : myLibrary.resources) {
+                writer.write("ID: " + resource.getResourceID() + ", Name: " + resource.resourceName + ", Type: " + resource.type + "\n");
+            }
+            
+            writer.write("\nEnd of Library Data\n");
+
+            System.out.println("Data successfully written to LibraryData.txt.");
+        } catch (IOException e) {
+            System.out.println("An error occurred while writing data to file: " + e.getMessage());
+        }
+    }
 	
 
 	
@@ -530,6 +557,9 @@ public class Driver{
 				}
 			driver.myLibrary.updateFines();
 		}
+
+		// Existing functionalities
+        driver.writeLibraryDataToFile();  // Call the method to write data
 		
 		driver.sc.close();		//closing the Scanner
 		//Printing date...

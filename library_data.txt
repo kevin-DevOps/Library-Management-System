@@ -1,9 +1,0 @@
-# Users
-User|admin|munshi:p|lums123|ADMIN
-User|student1|student123|STUDENT
-User|faculty1|faculty123|FACULTY
-
-# Resources
-Resource|Book|Java Programming Basics
-Resource|Magazine|Tech Monthly
-Resource|CoursePack|Data Structures Guide
