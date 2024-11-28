@@ -3,8 +3,13 @@ Library Name: LUMS Library
 Users:
 ID: 14100180, Name: admin, Type: 1
 ID: 0, Name: student1, Type: 3
-ID: 14100181, Name: admin1, Type: 1
+ID: 14100181, Name: teacher, Type: 2
+ID: 14100182, Name: student, Type: 3
 
 Resources:
+ID: 1001, Name: book, Type: 1
+ID: 1002, Name: magazine, Type: 2
+ID: 1003, Name: magazine, Type: 3
+ID: 1004, Name: course, Type: 2
 
 End of Library Data

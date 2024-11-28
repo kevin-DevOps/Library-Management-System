@@ -20,7 +20,7 @@ public class Borrower extends LibraryUser{
      * will print the fines due on the screen for the current user
      */
 		
-    void viewFines(){
+    public void viewFines(){
 
 		if(fines.size() == 0){
 				System.out.println("There are no fines.");
@@ -42,7 +42,7 @@ public class Borrower extends LibraryUser{
     /**
      * will print all the pending requests this user has made, the requests can be for multiple resources
      */
-    void viewRequests(){
+    public void viewRequests(){
 			
 			if(requestedResources.size() == 0){
 				System.out.println("There are no requests pending!");
@@ -60,7 +60,7 @@ public class Borrower extends LibraryUser{
     /**
      * should print on the screen the names and ID's of all the resources that this user has issued
      */
-    void viewIssued(){
+    public void viewIssued(){
 			if(issuedResources.size() == 0){
 				System.out.println("There are no resources issued!\n");
 				return;
@@ -78,7 +78,7 @@ public class Borrower extends LibraryUser{
     /**
      * view the issue dates for all the resources the current user has issued
      */
-    void viewIssueDates(){
+    public void viewIssueDates(){
 			if(issuedResources.size() == 0){
 				System.out.println("There are no resources issued!\n");
 				return;
@@ -97,7 +97,7 @@ public class Borrower extends LibraryUser{
      * view the due dates for all the resources the current user has issued
      * the due date must be 15 days after the issue date for the student and 30 days for the faculty
      */
-    void viewDueDates(){
+    public void viewDueDates(){
 			if(issuedResources.size() == 0){
 				System.out.println("There are no resources issued!\n");
 				return;
@@ -115,7 +115,7 @@ public class Borrower extends LibraryUser{
     /**
      *  should print the names and ID's of all the issued resources by this user which are currenlty overdue (their return date has passed)
      */
-    void viewOverdue(){
+    public void viewOverdue(){
 			if(issuedResources.size() == 0){
 				System.out.println("There are no resources issued!\n");
 				return;
@@ -149,7 +149,7 @@ public class Borrower extends LibraryUser{
      * @param resourceID give in the resource id of the Book/ReadingPack which needs to be issued
      * @return if the resource is available, issue it to the user and return true, else make a request and return false
      */
-    boolean tryIssue(ArrayList<LibraryResource> res){
+    public boolean tryIssue(ArrayList<LibraryResource> res){
 			Library lib = Library.getInstance("LUMS Library");
 			
 			if(res == null || res.size() == 0){
@@ -218,7 +218,7 @@ public class Borrower extends LibraryUser{
      * for returning the resource, you must call the returnResource() method of the Borrowable interface
      * also, while returning, check the fines if the item is returned after the due date
      */
-    boolean tryReturn(int resourceID){
+    public boolean tryReturn(int resourceID){
 			
 			Library lib = Library.getInstance("LUMS Library");
 			LibraryResource res = lib.findResource(resourceID);
@@ -263,7 +263,7 @@ public class Borrower extends LibraryUser{
      * @param resourceID the unique resourceID of the Book/CoursePack whose pending request we want to withdraw
      * @return if the requests exists, withdraw it and return 1, if request does not exist, return false
      */
-    boolean withdrawRequest(int resourceID){
+    public boolean withdrawRequest(int resourceID){
 			
 			Library lib = Library.getInstance("LUMS Library");
 			LibraryResource res = lib.findResource(resourceID);
@@ -283,7 +283,7 @@ public class Borrower extends LibraryUser{
 		}
 		
 		
-		void deleteRequest(int resID){
+		public void deleteRequest(int resID){
 			for(int i=0;i<requestedResources.size();i++){
 				if(requestedResources.get(i) == resID){
 					requestedResources.remove(i);
@@ -292,7 +292,7 @@ public class Borrower extends LibraryUser{
 			}
 		}
 		
-		boolean tryRenew(int resID){
+		public boolean tryRenew(int resID){
 			Library lib = Library.getInstance("LUMS Library");
 			LibraryResource res = lib.findResource(resID);
 			
@@ -332,7 +332,7 @@ public class Borrower extends LibraryUser{
 			}
 		}
 		
-		boolean findIssued(int id){
+		public boolean findIssued(int id){
 			for(int i=0;i< issuedResources.size();i++){
 				if(issuedResources.get(i) == id){
 					return true;

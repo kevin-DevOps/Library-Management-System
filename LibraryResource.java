@@ -7,14 +7,20 @@ public class LibraryResource {
     /**
      * name of a library resource, must be unique
      */
-    String resourceName;
+    public String resourceName;
+    public String getResourceName(){
+      return this.resourceName;
+    }
 
     /**
      * unique id of a library resource
      */
     protected int resourceID;
 		
-		int type;
+		public int type;
+    public int type(){
+      return this.type;
+    }
 		
     /**
      *

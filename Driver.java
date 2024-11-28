@@ -478,7 +478,7 @@ public class Driver{
             // Write resource information
             writer.write("\nResources:\n");
             for (LibraryResource resource : myLibrary.resources) {
-                writer.write("ID: " + resource.getResourceID() + ", Name: " + resource.resourceName + ", Type: " + resource.type + "\n");
+                writer.write("ID: " + resource.getResourceID() + ", Name: " + resource.getResourceName() + ", Type: " + resource.type() + "\n");
             }
             
             writer.write("\nEnd of Library Data\n");
